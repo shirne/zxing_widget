@@ -40,13 +40,13 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Center(
+            const Center(
               child: BarcodeWidget(
                 QrcodePainter('qrcode data'),
               ),
             ),
             const SizedBox(height: 16),
-            Center(
+            const Center(
               child: BarcodeWidget(
                 QrcodePainter(
                   'qrcode data',
@@ -56,21 +56,21 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             const SizedBox(height: 16),
-            Center(
+            const Center(
               child: BarcodeWidget(
                 PDF417Painter('pdf417 data'),
-                size: const Size(300, 100),
+                size: Size(300, 100),
               ),
             ),
             const SizedBox(height: 16),
-            Center(
+            const Center(
               child: BarcodeWidget(
                 DataMatrixPainter('DataMatrix data'),
-                size: const Size(300, 200),
+                size: Size(300, 200),
               ),
             ),
             const SizedBox(height: 16),
-            Center(
+            const Center(
               child: BarcodeWidget(
                 AztecPainter('AZTec data'),
               ),
