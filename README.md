@@ -1,5 +1,5 @@
-ZXing Widget(Dart)
-
+# ZXing Widget(Dart)
+[![pub package](https://img.shields.io/pub/v/zxing_widget.svg)](https://pub.dartlang.org/packages/zxing_widget)
 
 A Barcode Generator Widget that can be embedded inside flutter. It uses zxing-dart for all platforms.
 
