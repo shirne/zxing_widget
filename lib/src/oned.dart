@@ -3,6 +3,7 @@ import 'package:zxing_lib/oned.dart';
 import 'package:zxing_lib/common.dart';
 import 'package:zxing_lib/zxing.dart';
 
+import 'constants.dart';
 import 'painter.dart';
 
 class OnedPainter extends BarcodePainter {
@@ -10,6 +11,10 @@ class OnedPainter extends BarcodePainter {
     super.data,
     this.writer, {
     this.format,
+    super.padding = 5,
+    super.backgroundColor = zDefaultBackgroundColor,
+    super.foregroundColor = zDefaultForegroundColor,
+    super.afterPaint,
   });
 
   final OneDimensionalCodeWriter writer;
@@ -34,7 +39,7 @@ class OnedPainter extends BarcodePainter {
     final tmpWidth = size.width - padding * 2;
     double pixelSize = (tmpWidth ~/ matrix.width).toDouble();
     if (pixelSize < 2) pixelSize = 2;
-    final adjust = tmpWidth - matrix.width * pixelSize;
+    final adjust = (tmpWidth - matrix.width * pixelSize) / 2;
 
     final rPadding = padding + adjust;
     final rect = Rect.fromPoints(
@@ -55,11 +60,12 @@ class OnedPainter extends BarcodePainter {
             rect.left + x * pixelSize,
             rect.top,
             pixelSize,
-            size.height - rPadding,
+            size.height - rPadding * 2,
           ),
           paint,
         );
       }
     }
+    afterPaint?.call(canvas, size);
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/cupertino.dart';
 import 'package:zxing_lib/common.dart';
 
@@ -28,12 +30,14 @@ abstract class BarcodePainter extends CustomPainter {
     this.padding = 5,
     this.backgroundColor = zDefaultBackgroundColor,
     this.foregroundColor = zDefaultForegroundColor,
+    this.afterPaint,
   });
 
   final String data;
   final double padding;
   final Color backgroundColor;
   final Color foregroundColor;
+  final Function(Canvas, Size)? afterPaint;
 
   BitMatrix encodeData(data);
 
@@ -43,19 +47,20 @@ abstract class BarcodePainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final shortest = size.shortestSide;
-
-    final tmpWidth = shortest - padding * 2;
     final matrix = encodeData(data);
 
-    double pixelSize = (tmpWidth ~/ matrix.width).toDouble();
-    if (pixelSize < 2) pixelSize = 2;
-    final adjust = tmpWidth - matrix.width * pixelSize;
+    double pixelWith = ((size.width - padding * 2) ~/ matrix.width).toDouble();
+    double pixelHeight =
+        ((size.height - padding * 2) ~/ matrix.height).toDouble();
 
-    final wOffset = (size.width - shortest + adjust) / 2;
-    final hOffset = (size.height - shortest + adjust) / 2;
+    double pixelSize = math.min(pixelWith, pixelHeight);
+
+    if (pixelSize < 2) pixelSize = 2;
+
+    final wOffset = (size.width - matrix.width * pixelSize) / 2;
+    final hOffset = (size.height - matrix.height * pixelSize) / 2;
     final rect = Rect.fromPoints(
-      Offset(padding + wOffset, padding + hOffset),
+      Offset(wOffset, hOffset),
       Offset(size.width - padding - wOffset, size.height - padding - hOffset),
     );
 
@@ -65,6 +70,7 @@ abstract class BarcodePainter extends CustomPainter {
     );
 
     final paint = Paint()..color = foregroundColor;
+
     for (int x = 0; x < matrix.width; x++) {
       for (int y = 0; y < matrix.height; y++) {
         if (matrix.get(x, y)) {
@@ -80,5 +86,6 @@ abstract class BarcodePainter extends CustomPainter {
         }
       }
     }
+    afterPaint?.call(canvas, size);
   }
 }
