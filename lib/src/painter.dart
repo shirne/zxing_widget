@@ -25,7 +25,7 @@ class BarcodeWidget extends StatelessWidget {
 }
 
 abstract class BarcodePainter extends CustomPainter {
-  BarcodePainter(
+  const BarcodePainter(
     this.data, {
     this.padding = 5,
     this.backgroundColor = zDefaultBackgroundColor,

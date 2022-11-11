@@ -8,7 +8,7 @@ import 'constants.dart';
 import 'painter.dart';
 
 class DataMatrixPainter extends BarcodePainter {
-  DataMatrixPainter(
+  const DataMatrixPainter(
     super.data, {
     this.symbolShapeHint,
     this.compact,

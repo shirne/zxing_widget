@@ -8,7 +8,7 @@ import 'constants.dart';
 import 'painter.dart';
 
 class PDF417Painter extends BarcodePainter {
-  PDF417Painter(
+  const PDF417Painter(
     super.data, {
     this.compaction,
     this.errorCorrectionLevel,

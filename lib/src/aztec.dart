@@ -8,7 +8,7 @@ import 'constants.dart';
 import 'painter.dart';
 
 class AztecPainter extends BarcodePainter {
-  AztecPainter(
+  const AztecPainter(
     super.data, {
     this.errorPercent,
     this.encoding,

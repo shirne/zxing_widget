@@ -5,4 +5,5 @@
 - DataMatrix code
 - AZTec code
 - OneDemension code
+- Paint callback
 

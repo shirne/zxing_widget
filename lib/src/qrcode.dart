@@ -6,7 +6,7 @@ import 'constants.dart';
 import 'painter.dart';
 
 class QrcodePainter extends BarcodePainter {
-  QrcodePainter(
+  const QrcodePainter(
     super.data, {
     this.errorCorrectionLevel,
     super.padding = 5,

@@ -10,6 +10,7 @@ A Barcode Generator Widget that can be embedded inside flutter. It uses zxing-da
 - ✅ DataMatrix code
 - ✅ AZTec code
 - ✅ OneDemension code
+- ✅ Paint callback
 
 ## Getting started
 
@@ -21,8 +22,13 @@ See `/example` folder.
 
 Scan from camera
 ```dart
-QRCodeWidget(
-    'data to be encoded',
+BarcodeWidget(
+    QrcodePainter(
+        'qrcode data',
+        errorCorrectionLevel: ErrorCorrectionLevel.H,
+        foregroundColor: Colors.blue,
+    ),
+    size: const Size(200, 200),
 ),
 ```
 

@@ -7,7 +7,7 @@ import 'constants.dart';
 import 'painter.dart';
 
 class OnedPainter extends BarcodePainter {
-  OnedPainter(
+  const OnedPainter(
     super.data,
     this.writer, {
     this.format,
