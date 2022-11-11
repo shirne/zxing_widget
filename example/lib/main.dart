@@ -40,6 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            const SizedBox(height: 16),
             const Center(
               child: BarcodeWidget(
                 QrcodePainter('qrcode data'),

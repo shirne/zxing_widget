@@ -12,6 +12,10 @@ A Barcode Generator Widget that can be embedded inside flutter. It uses zxing-da
 - ✅ OneDemension code
 - ✅ Paint callback
 
+## Preview
+
+<img src="preview/codes.png" width="300" alt="Code Generator Preview"/>
+
 ## Getting started
 
 flutter pub add zxing_widget
