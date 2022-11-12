@@ -17,6 +17,7 @@ A Barcode Generator Widget that can be embedded inside flutter. It uses zxing-da
 - ✅ AZTec code
 - ✅ OneDemension code
 - ✅ Paint callback
+- ✅ Customize color
 
 ## Preview
 

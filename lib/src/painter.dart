@@ -5,26 +5,38 @@ import 'package:zxing_lib/common.dart';
 
 import 'constants.dart';
 
+/// A Widget to show code painted by [Painter]
 class BarcodeWidget extends StatelessWidget {
+  /// constructor
   const BarcodeWidget(
     this.painter, {
     this.size = const Size(100, 100),
     super.key,
+    this.child,
   });
 
+  /// widget size
   final Size size;
+
+  /// barcode painter
   final BarcodePainter painter;
+
+  /// child above [CustomPaint]
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
       size: size,
       painter: painter,
+      child: child,
     );
   }
 }
 
+/// abstract painter. paint a [BitMatrix] data to canvas
 abstract class BarcodePainter extends CustomPainter {
+  /// constructor
   const BarcodePainter(
     this.data, {
     this.padding = 5,
@@ -33,12 +45,22 @@ abstract class BarcodePainter extends CustomPainter {
     this.afterPaint,
   });
 
+  /// data to be encode and paint
   final String data;
+
+  /// space around barcode
   final double padding;
+
+  /// background color
   final Color backgroundColor;
+
+  /// foreground color
   final Color foregroundColor;
+
+  /// after paint callback. you can paint yout
   final Function(Canvas, Size)? afterPaint;
 
+  /// encode data to a BitMatrix
   BitMatrix encodeData(data);
 
   @override

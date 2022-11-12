@@ -5,7 +5,9 @@ import 'package:zxing_lib/zxing.dart';
 import 'constants.dart';
 import 'painter.dart';
 
+/// qrcode painter
 class QrcodePainter extends BarcodePainter {
+  /// constructor
   const QrcodePainter(
     super.data, {
     this.errorCorrectionLevel,
@@ -14,7 +16,10 @@ class QrcodePainter extends BarcodePainter {
     super.foregroundColor = zDefaultForegroundColor,
     super.afterPaint,
   });
+
+  /// Error Correction Level
   final ErrorCorrectionLevel? errorCorrectionLevel;
+
   @override
   BitMatrix encodeData(data) {
     return QRCodeWriter().encode(data, BarcodeFormat.QR_CODE, 1, 1, {

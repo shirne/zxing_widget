@@ -6,7 +6,9 @@ import 'package:zxing_lib/zxing.dart';
 import 'constants.dart';
 import 'painter.dart';
 
+/// One Demension code painter
 class OnedPainter extends BarcodePainter {
+  /// constructor
   const OnedPainter(
     super.data,
     this.writer, {
@@ -17,7 +19,12 @@ class OnedPainter extends BarcodePainter {
     super.afterPaint,
   });
 
+  /// oned code writer.
+  /// [CodaBarWriter], [Code39Writer], [Code93Writer], [Code128Writer],
+  /// [ITFWriter], [EAN8Writer], [EAN13Writer], [UPCEWriter]
   final OneDimensionalCodeWriter writer;
+
+  /// format that supported by [writer]. default pick first.
   final BarcodeFormat? format;
 
   @override

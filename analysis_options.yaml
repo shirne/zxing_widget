@@ -7,3 +7,4 @@ linter:
     prefer_single_quotes: true
     always_declare_return_types: true
     require_trailing_commas: true
+    public_member_api_docs: true

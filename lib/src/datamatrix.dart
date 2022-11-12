@@ -7,7 +7,9 @@ import 'package:zxing_lib/zxing.dart';
 import 'constants.dart';
 import 'painter.dart';
 
+/// DataMatrix code painter.
 class DataMatrixPainter extends BarcodePainter {
+  /// constructor
   const DataMatrixPainter(
     super.data, {
     this.symbolShapeHint,
@@ -19,10 +21,19 @@ class DataMatrixPainter extends BarcodePainter {
     super.foregroundColor = zDefaultForegroundColor,
     super.afterPaint,
   });
+
+  /// see [EncodeHintType.DATA_MATRIX_SHAPE]
   final SymbolShapeHint? symbolShapeHint;
+
+  /// see [EncodeHintType.DATA_MATRIX_COMPACT]
   final bool? compact;
+
+  /// data encoding
   final Encoding? encoding;
+
+  /// see [EncodeHintType.GS1_FORMAT]
   final bool? gsiFormat;
+
   @override
   BitMatrix encodeData(data) {
     return DataMatrixWriter().encode(data, BarcodeFormat.DATA_MATRIX, 1, 1, {

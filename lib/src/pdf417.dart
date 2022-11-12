@@ -7,7 +7,9 @@ import 'package:zxing_lib/zxing.dart';
 import 'constants.dart';
 import 'painter.dart';
 
+/// PDF417 code painter
 class PDF417Painter extends BarcodePainter {
+  /// constructor
   const PDF417Painter(
     super.data, {
     this.compaction,
@@ -19,11 +21,17 @@ class PDF417Painter extends BarcodePainter {
     super.foregroundColor = zDefaultForegroundColor,
     super.afterPaint,
   });
+
+  /// see [EncodeHintType.PDF417_COMPACTION]
   final Compaction? compaction;
 
-  // 0-8
+  /// 0-8. see [EncodeHintType.ERROR_CORRECTION]
   final int? errorCorrectionLevel;
+
+  /// data encoding
   final Encoding? encoding;
+
+  /// see [EncodeHintType.PDF417_AUTO_ECI]
   final bool? autoEci;
 
   @override

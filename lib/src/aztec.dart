@@ -7,7 +7,9 @@ import 'package:zxing_lib/zxing.dart';
 import 'constants.dart';
 import 'painter.dart';
 
+/// AZTec code painter.
 class AztecPainter extends BarcodePainter {
+  /// constructor
   const AztecPainter(
     super.data, {
     this.errorPercent,
@@ -18,9 +20,16 @@ class AztecPainter extends BarcodePainter {
     super.foregroundColor = zDefaultForegroundColor,
     super.afterPaint,
   });
+
+  /// error percent(0-100)
   final int? errorPercent;
+
+  /// data encoding
   final Encoding? encoding;
+
+  /// aztec layer. see [EncodeHintType.AZTEC_LAYERS]
   final int? aztecLayers;
+
   @override
   BitMatrix encodeData(data) {
     return AztecWriter().encode(data, BarcodeFormat.AZTEC, 1, 1, {
