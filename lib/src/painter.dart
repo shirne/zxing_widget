@@ -43,14 +43,17 @@ abstract class BarcodePainter extends CustomPainter {
 
   @override
   bool shouldRepaint(BarcodePainter oldDelegate) =>
-      data != oldDelegate.data || padding != oldDelegate.padding;
+      data != oldDelegate.data ||
+      padding != oldDelegate.padding ||
+      backgroundColor != oldDelegate.backgroundColor ||
+      foregroundColor != oldDelegate.foregroundColor;
 
   @override
   void paint(Canvas canvas, Size size) {
     final matrix = encodeData(data);
 
-    double pixelWith = ((size.width - padding * 2) ~/ matrix.width).toDouble();
-    double pixelHeight =
+    final pixelWith = ((size.width - padding * 2) ~/ matrix.width).toDouble();
+    final pixelHeight =
         ((size.height - padding * 2) ~/ matrix.height).toDouble();
 
     double pixelSize = math.min(pixelWith, pixelHeight);

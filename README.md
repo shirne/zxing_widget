@@ -3,6 +3,12 @@
 
 A Barcode Generator Widget that can be embedded inside flutter. It uses zxing-dart for all platforms.
 
+| | |
+|:---:|:---:|
+|ZXing Dart|[![pub package](https://img.shields.io/pub/v/zxing_lib.svg)](https://pub.dartlang.org/packages/zxing_lib)|
+|ZXing Widget|[![pub package](https://img.shields.io/pub/v/zxing_widget.svg)](https://pub.dartlang.org/packages/zxing_widget)|
+|ZXing Scanner|[![pub package](https://img.shields.io/pub/v/zxing_scanner.svg)](https://pub.dartlang.org/packages/zxing_scanner)|
+
 ## Features
 
 - ✅ QRCode
@@ -38,4 +44,4 @@ BarcodeWidget(
 
 ## Additional information
 
-This package depends on [zxing_lib](https://pub.flutter-io.cn/packages/zxing_lib) witch is a pure dart port of ZXing.
+This package depends on [zxing_lib](https://pub.dartlang.org/packages/zxing_lib) witch is a pure dart port of ZXing.
