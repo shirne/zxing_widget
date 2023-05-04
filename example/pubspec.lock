@@ -79,10 +79,10 @@ packages:
     dependency: transitive
     description:
       name: intl
-      sha256: "910f85bce16fb5c6f614e117efa303e85a1731bb0081edf3604a2ae6e9a3cc91"
+      sha256: "3bc132a9dbce73a7e4a21a17d06e1878839ffbf975568bc875c60537824b0c4d"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.17.0"
+    version: "0.18.1"
   js:
     dependency: transitive
     description:
@@ -196,17 +196,17 @@ packages:
     dependency: transitive
     description:
       name: zxing_lib
-      sha256: eddae3c96302d87bedf2d7a4eaff5b2bb78e9861adda9f60d5844f0afa85003d
+      sha256: "84f6ec19b04dd54bc0b25c539c7c3567a5f9e872e3feb23763df027a1f855c11"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.8.4"
+    version: "0.9.0"
   zxing_widget:
     dependency: "direct main"
     description:
       path: ".."
       relative: true
     source: path
-    version: "0.1.1"
+    version: "0.2.0"
 sdks:
-  dart: ">=2.18.4 <3.0.0"
+  dart: ">=2.19.0 <3.0.0"
   flutter: ">=3.0.0"

@@ -1,6 +1,6 @@
 name: zxing_widget
 description: A Barcode Generator Widget that can be embedded inside flutter. It uses zxing-dart for all platforms.
-version: 0.1.1
+version: 0.2.0
 repository: https://github.com/shirne/zxing_widget
 homepage: https://shirne.github.io/
 
@@ -12,11 +12,11 @@ dependencies:
   flutter:
     sdk: flutter
   
-  zxing_lib: ^0.8.2
+  zxing_lib: ^0.9.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints:
 
 flutter:
