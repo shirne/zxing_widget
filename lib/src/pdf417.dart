@@ -22,27 +22,32 @@ class PDF417Painter extends BarcodePainter {
     super.afterPaint,
   });
 
-  /// see [EncodeHintType.PDF417_COMPACTION]
+  /// see [EncodeHintType.pdf417Compaction]
   final Compaction? compaction;
 
-  /// 0-8. see [EncodeHintType.ERROR_CORRECTION]
+  /// 0-8. see [EncodeHintType.errorCorrection]
   final int? errorCorrectionLevel;
 
   /// data encoding
   final Encoding? encoding;
 
-  /// see [EncodeHintType.PDF417_AUTO_ECI]
+  /// see [EncodeHintType.pdf417AutoEci]
   final bool? autoEci;
 
   @override
   BitMatrix encodeData(data) {
-    return PDF417Writer().encode(data, BarcodeFormat.PDF_417, 1, 1, {
-      if (compaction != null) EncodeHintType.PDF417_COMPACTION: compaction!,
-      if (errorCorrectionLevel != null)
-        EncodeHintType.ERROR_CORRECTION: errorCorrectionLevel!,
-      if (encoding != null) EncodeHintType.CHARACTER_SET: encoding!,
-      if (autoEci != null) EncodeHintType.PDF417_AUTO_ECI: autoEci!,
-      EncodeHintType.MARGIN: 0,
-    });
+    return PDF417Writer().encode(
+      data,
+      BarcodeFormat.pdf417,
+      1,
+      1,
+      EncodeHint(
+        pdf417Compaction: compaction,
+        errorCorrection: errorCorrectionLevel,
+        characterSet: encoding?.name,
+        pdf417AutoEci: autoEci ?? false,
+        margin: 0,
+      ),
+    );
   }
 }

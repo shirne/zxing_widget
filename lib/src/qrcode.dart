@@ -22,10 +22,15 @@ class QrcodePainter extends BarcodePainter {
 
   @override
   BitMatrix encodeData(data) {
-    return QRCodeWriter().encode(data, BarcodeFormat.QR_CODE, 1, 1, {
-      if (errorCorrectionLevel != null)
-        EncodeHintType.ERROR_CORRECTION: errorCorrectionLevel!.index,
-      EncodeHintType.MARGIN: 0,
-    });
+    return QRCodeWriter().encode(
+      data,
+      BarcodeFormat.qrCode,
+      1,
+      1,
+      EncodeHint(
+        errorCorrectionLevel: errorCorrectionLevel,
+        margin: 0,
+      ),
+    );
   }
 }

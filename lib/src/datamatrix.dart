@@ -15,33 +15,38 @@ class DataMatrixPainter extends BarcodePainter {
     this.symbolShapeHint,
     this.compact,
     this.encoding,
-    this.gsiFormat,
+    this.gs1Format,
     super.padding = 5,
     super.backgroundColor = zDefaultBackgroundColor,
     super.foregroundColor = zDefaultForegroundColor,
     super.afterPaint,
   });
 
-  /// see [EncodeHintType.DATA_MATRIX_SHAPE]
+  /// see [EncodeHintType.dataMatrixShape]
   final SymbolShapeHint? symbolShapeHint;
 
-  /// see [EncodeHintType.DATA_MATRIX_COMPACT]
+  /// see [EncodeHintType.dataMatrixCompact]
   final bool? compact;
 
   /// data encoding
   final Encoding? encoding;
 
-  /// see [EncodeHintType.GS1_FORMAT]
-  final bool? gsiFormat;
+  /// see [EncodeHintType.gs1Format]
+  final bool? gs1Format;
 
   @override
   BitMatrix encodeData(data) {
-    return DataMatrixWriter().encode(data, BarcodeFormat.DATA_MATRIX, 1, 1, {
-      if (symbolShapeHint != null)
-        EncodeHintType.DATA_MATRIX_SHAPE: symbolShapeHint!,
-      if (compact != null) EncodeHintType.DATA_MATRIX_COMPACT: compact!,
-      if (gsiFormat != null) EncodeHintType.GS1_FORMAT: gsiFormat!,
-      EncodeHintType.MARGIN: 0,
-    });
+    return DataMatrixWriter().encode(
+      data,
+      BarcodeFormat.dataMatrix,
+      1,
+      1,
+      EncodeHint(
+        dataMatrixShape: symbolShapeHint,
+        dataMatrixCompact: compact ?? false,
+        gs1Format: gs1Format ?? false,
+        margin: 0,
+      ),
+    );
   }
 }

@@ -34,9 +34,7 @@ class OnedPainter extends BarcodePainter {
       format ?? writer.supportedWriteFormats!.first,
       1,
       1,
-      {
-        EncodeHintType.MARGIN: 0,
-      },
+      const EncodeHint(margin: 0),
     );
   }
 

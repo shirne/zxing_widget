@@ -1,3 +1,6 @@
+## 1.0.0
+* upgrade zxing to 1.0.0
+
 ## 0.2.0
 * upgrade zxing to 0.9.0
 

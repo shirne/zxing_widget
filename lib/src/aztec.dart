@@ -27,16 +27,22 @@ class AztecPainter extends BarcodePainter {
   /// data encoding
   final Encoding? encoding;
 
-  /// aztec layer. see [EncodeHintType.AZTEC_LAYERS]
+  /// aztec layer. see [EncodeHintType.aztecLayers]
   final int? aztecLayers;
 
   @override
   BitMatrix encodeData(data) {
-    return AztecWriter().encode(data, BarcodeFormat.AZTEC, 1, 1, {
-      if (errorPercent != null) EncodeHintType.ERROR_CORRECTION: errorPercent!,
-      if (encoding != null) EncodeHintType.CHARACTER_SET: encoding!,
-      if (aztecLayers != null) EncodeHintType.AZTEC_LAYERS: aztecLayers!,
-      EncodeHintType.MARGIN: 0,
-    });
+    return AztecWriter().encode(
+      data,
+      BarcodeFormat.aztec,
+      1,
+      1,
+      EncodeHint(
+        errorCorrection: errorPercent,
+        characterSet: encoding?.name,
+        aztecLayers: aztecLayers,
+        margin: 0,
+      ),
+    );
   }
 }
