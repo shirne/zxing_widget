@@ -1,3 +1,6 @@
+## 1.1.0
+* add toImage for Painter
+
 ## 1.0.0
 * upgrade zxing to 1.0.0
 

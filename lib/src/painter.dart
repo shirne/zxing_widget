@@ -1,6 +1,7 @@
 import 'dart:math' as math;
+import 'dart:ui' as ui;
 
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/widgets.dart';
 import 'package:zxing_lib/common.dart';
 
 import 'constants.dart';
@@ -112,5 +113,16 @@ abstract class BarcodePainter extends CustomPainter {
       }
     }
     afterPaint?.call(canvas, size);
+  }
+
+  /// draw barcode to an image
+  /// you can call image.toByteData to generate binary data
+  Future<ui.Image> toImage(Size size) async {
+    final pr = ui.PictureRecorder();
+    final canvas = Canvas(pr);
+    paint(canvas, size);
+    canvas.save();
+    final picture = pr.endRecording();
+    return await picture.toImage(size.width.toInt(), size.height.toInt());
   }
 }
