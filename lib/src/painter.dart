@@ -75,9 +75,8 @@ abstract class BarcodePainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final matrix = encodeData(data);
 
-    final pixelWith = ((size.width - padding * 2) ~/ matrix.width).toDouble();
-    final pixelHeight =
-        ((size.height - padding * 2) ~/ matrix.height).toDouble();
+    final pixelWith = (size.width - padding * 2) / matrix.width;
+    final pixelHeight = (size.height - padding * 2) / matrix.height;
 
     double pixelSize = math.min(pixelWith, pixelHeight);
 
@@ -96,20 +95,24 @@ abstract class BarcodePainter extends CustomPainter {
     );
 
     final paint = Paint()..color = foregroundColor;
-
-    for (int x = 0; x < matrix.width; x++) {
-      for (int y = 0; y < matrix.height; y++) {
-        if (matrix.get(x, y)) {
-          canvas.drawRect(
-            Rect.fromLTWH(
-              rect.left + x * pixelSize,
-              rect.top + y * pixelSize,
-              pixelSize,
-              pixelSize,
-            ),
-            paint,
-          );
-        }
+    final row = BitArray(matrix.width);
+    int x = 0, x2 = 0;
+    for (int y = 0; y < matrix.height; y++) {
+      matrix.getRow(y, row);
+      x = row.getNextSet(0);
+      x2 = row.getNextUnset(x);
+      while (x < row.size) {
+        canvas.drawRect(
+          Rect.fromLTWH(
+            rect.left + x * pixelSize,
+            rect.top + y * pixelSize - 0.1,
+            pixelSize * (x2 - x),
+            pixelSize + 0.1,
+          ),
+          paint,
+        );
+        x = row.getNextSet(x2);
+        x2 = row.getNextUnset(x);
       }
     }
     afterPaint?.call(canvas, size);
