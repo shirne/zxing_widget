@@ -18,6 +18,7 @@ A Barcode Generator Widget that can be embedded inside flutter. It uses zxing-da
 - ✅ OneDemension code
 - ✅ Paint callback
 - ✅ Customize color
+- ✅ to image
 
 ## Preview
 
@@ -31,7 +32,7 @@ flutter pub add zxing_widget
 
 See `/example` folder.
 
-Scan from camera
+Render a qrcode
 ```dart
 BarcodeWidget(
     QrcodePainter(
@@ -41,6 +42,20 @@ BarcodeWidget(
     ),
     size: const Size(200, 200),
 ),
+```
+
+Generate an image
+```dart
+import 'dart:ui' as ui;
+
+final ui.Image image = QrcodePainter(
+        'qrcode data',
+        errorCorrectionLevel: ErrorCorrectionLevel.H,
+        foregroundColor: Colors.blue,
+    ).toImage(const Size(200, 200));
+
+// binary png data
+final binData = await image.toByteData(format: ui.ImageByteFormat.png);
 ```
 
 ## Additional information
